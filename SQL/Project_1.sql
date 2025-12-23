@@ -136,10 +136,10 @@ foreign key (order_id) references order_table (order_id),
 foreign key (product_id) references products (product_id));
 
 insert into orderdetail values
-(1, 101, 1, 2, 300),    -- Power Bank (150 × 2)
-(2, 101, 2, 3, 600),    -- USB Cable (200 × 3)
-(3, 102, 4, 1, 800),    -- Wireless Mouse (800 × 1)
-(4, 103, 3, 2, 2400),   -- Bluetooth Speaker (1200 × 2)
+(1, 101, 1, 2, 300),
+(2, 101, 2, 3, 600),
+(3, 102, 4, 1, 800),
+(4, 103, 3, 2, 2400), 
 (5, 104, 5, 1, 1800);
 
 -- all order details for specific order
@@ -162,5 +162,7 @@ limit 3;
 
 select count(*) from orderdetail
 where product_id = 3;
+
+
 
 
