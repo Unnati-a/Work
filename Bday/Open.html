@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Noto+Serif:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+<style>
+body{margin:0;text-align:center}
+
+/* COMMON */
+.screen{display:none;min-height:100vh;position:relative;overflow:hidden}
+.active{display:flex;flex-direction:column;justify-content:center;align-items:center}
+.bg{background:linear-gradient(135deg,#ffb6c1,#87ceeb,#1e3a8a)}
+
+/* PAGE 1 */
+.page1 h1{font-family:Pacifico;font-size:38px;color:white}
+.btn{
+font-family:'Noto Serif',serif;
+font-size:20px;
+padding:14px 34px;
+margin:10px;
+border:none;
+border-radius:14px;
+cursor:pointer
+}
+.yes{background:#ffd700}
+.no{background:#aaa}
+
+/* PAGE 2 */
+.page2 img{max-width:55%}
+.page2 p{font-family:Pacifico;font-size:24px;color:white}
+
+/* PAGE 3 */
+.page3 h1{font-family:Pacifico;font-size:44px;color:white;z-index:5}
+
+/* BALLOONS */
+.balloon-wrap{
+position:absolute;
+bottom:-120px;
+animation:rise linear infinite
+}
+.balloon{
+width:42px;
+height:58px;
+border-radius:50%
+}
+.balloon::after{
+content:'';
+width:2px;
+height:45px;
+background:#333;
+position:absolute;
+bottom:-45px;
+left:50%
+}
+
+/* Balloon colors */
+.red{background:red}
+.blue{background:#3498db}
+.green{background:#2ecc71}
+.yellow{background:#f1c40f}
+.pink{background:#ff9acb}
+.purple{background:#9b59b6}
+.orange{background:#e67e22}
+.cyan{background:#1abc9c}
+.gold{background:gold}
+.white{background:white}
+
+@keyframes rise{
+from{bottom:-120px}
+to{bottom:120%}
+}
+
+/* PAGE 4 */
+.dance{
+width:260px;
+max-width:80%;
+border-radius:18px;
+z-index:10
+}
+
+/* RIBBONS */
+.ribbon{
+position:absolute;
+top:-80px;
+width:10px;
+height:70px;
+border-radius:4px;
+animation:ribbonFall linear infinite
+}
+@keyframes ribbonFall{
+to{transform:translateY(120vh)}
+}
+
+/* CONFETTI */
+.confetti{
+position:absolute;
+top:-20px;
+width:8px;
+height:8px;
+animation:confettiFall linear infinite
+}
+@keyframes confettiFall{
+to{transform:translateY(120vh) rotate(360deg)}
+}
+
+/* REPLAY */
+.replay{
+margin-top:20px;
+font-size:18px;
+padding:12px 30px;
+border:none;
+border-radius:20px;
+background:#ffd700;
+font-family:'Noto Serif',serif;
+cursor:pointer
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="screen page1 bg active" id="p1">
+<h1>Is Today Your Birthday !? 🎂</h1>
+<button class="btn yes" onclick="goPage2()">Yes</button>
+<button class="btn no" onclick="alert('Khotu Bol ma Jadiyaa 😛')">No</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="screen page2 bg" id="p2">
+<img src="cake-car.png">
+<p>Then Wow, a cake for you Mr.</p>
+<p id="timer">Wait for 10 seconds...</p>
+</div>
+
+<!-- PAGE 3 (MANY BALLOONS + NEXT) -->
+<div class="screen page3 bg" id="p3">
+<audio id="music" src="birthday-music.mp3" loop></audio>
+
+<script>
+for(let i=0;i<45;i++){
+document.write(`
+<div class="balloon-wrap" style="
+left:${Math.random()*100}%;
+animation-duration:${6+Math.random()*6}s">
+<div class="balloon ${['red','blue','green','yellow','pink','purple','orange','cyan','gold','white'][Math.floor(Math.random()*10)]}">
+</div>
+</div>
+`);
+}
+</script>
+
+<h1>Happiest Birthday Rudyyy 🥰🎉</h1>
+
+<button class="btn yes" onclick="goPage4()">Next ▶</button>
+</div>
+
+<!-- PAGE 4 (DANCE + RIBBONS + CONFETTI) -->
+<div class="screen bg" id="p4">
+
+<!-- RIBBONS -->
+<div class="ribbon" style="left:10%;background:red;animation-duration:4s"></div>
+<div class="ribbon" style="left:25%;background:yellow;animation-duration:5s"></div>
+<div class="ribbon" style="left:40%;background:blue;animation-duration:4.5s"></div>
+<div class="ribbon" style="left:55%;background:green;animation-duration:6s"></div>
+<div class="ribbon" style="left:70%;background:pink;animation-duration:5s"></div>
+<div class="ribbon" style="left:85%;background:orange;animation-duration:4s"></div>
+
+<!-- CONFETTI -->
+<div class="confetti" style="left:15%;background:red;animation-duration:3s"></div>
+<div class="confetti" style="left:30%;background:yellow;animation-duration:4s"></div>
+<div class="confetti" style="left:45%;background:blue;animation-duration:3.5s"></div>
+<div class="confetti" style="left:60%;background:green;animation-duration:4.2s"></div>
+<div class="confetti" style="left:75%;background:pink;animation-duration:3.8s"></div>
+
+<img class="dance" src="dance.gif">
+
+<button class="replay" onclick="location.reload()">Replay 🎉</button>
+</div>
+
+<script>
+function goPage2(){
+p1.classList.remove("active");
+p2.classList.add("active");
+
+let t=10;
+let i=setInterval(()=>{
+t--;
+timer.innerText="Wait for "+t+" seconds...";
+if(t===0){
+clearInterval(i);
+p2.classList.remove("active");
+p3.classList.add("active");
+music.play();
+}
+},1000);
+}
+
+function goPage4(){
+p3.classList.remove("active");
+p4.classList.add("active");
+}
+</script>
+
+</body>
+</html>
