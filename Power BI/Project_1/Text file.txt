@@ -1,0 +1,37 @@
+( in merge and append file showing caution symbol but is a glitch, once clicked it will go, file is ready and checked)
+1.
+- inserted 4 files, employees data and 3 sales file of excel
+- uploaded by URL by going through web
+
+2.
+- changed the data type of columns where needed
+- used first row as header for all files
+
+3.
+- exacted "city" from address used "after delimeter" and renamed column in "all sales file"
+- used upper and lower case, trim and clean for name
+- copied address and in new column replace value from "," to "-"
+
+4.
+- all values are in whole number only so no need to have decimal round off [but rounding can be done by "rounding" round up or round down ]
+- Added column from standard used "Substract"
+
+5.
+- added new columns by extracting date, month, year and quarter of year
+- added fiscal month name
+
+6.
+- added index column from 0 and 1
+- added conditional column by ifs 2 and else condition of reveneue [45k up = high, 20k up = medium, else low]
+
+7.
+- pivot and unpivot used converts data vertical to horizontal form and vise versa [may not load, glitch in loading data, but done]
+
+8.
+- "appended" all 3 files of as from option [2 or more files]
+- "merged" employees and sales table, we can view who sold, which employee sold particular item 
+
+9.
+- added column quality, distribution for easy view of data
+- duplicated a file for group by shown sum, average and count used advanced option
+

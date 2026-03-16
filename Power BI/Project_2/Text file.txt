@@ -1,0 +1,27 @@
+1.
+- Added all files and cleaned the files by removing blank rows
+
+2.
+- created hierarchies of date, region and product
+- changed data type and type categories = city, state, country etc.
+- added currency symbol as needed from table view
+
+3.
+- created star schema as asked no tables to create snowflake schema
+- star = all dimension connected to a center facts table
+- snowflake = one dimension connected to another dimension and than connected to facts table
+- created a relation single way, single flow only
+
+4.
+- created relations among tables in model view
+- from date there are 2 relations, date ==> return is in-active as 2 active can not work
+
+5.
+- 1st matrix = product category and region-wise sales
+- 2nd matrix = revenue by customer segment
+- 3rd matrix = return_reason by fiscal year (activate the 2nd connection and inactive the first one, as there are 2 connection)
+
+6.
+two types of filter flow
+a. single = from 1 to another table only 1 direction (up to down)
+b. both ways = from up to down and down to up flow but can create ambiguity
