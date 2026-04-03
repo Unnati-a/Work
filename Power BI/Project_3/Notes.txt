@@ -1,0 +1,24 @@
+- uploaded all data sets
+- cleaned data by removing blank rows and errors
+- changed data type where needed
+- added column of profit in "Sales dim"
+- Created full name column by merging first and last name and renamed it as "Full Name"
+- return Flag by DAX formula = checked if sales id is present in return id or no, if present than "returned" or else not
+
+- Added quick measure for total sales, profit, cost by simple sum() formula in "new measure" option(but not working)
+- calculated average sales per transaction = total sales / sales id (all will be different even if same costumer bought)
+- calculated % of return = returned count / total return flag
+
+- used sum, distinctcount, if already before and used average in sales
+- used concat, upper and left[to extract initials] in customer dim
+- used and and or to show priority and no priority customers in
+- used switch to categorise, high, medium, low
+
+- used eomonth to find end of month
+- done switch case found high medium and low
+- TOTALYTD find total sales from the start of the year up to the current date
+- sumx will calculate for each row and than calculate the total
+- average is same like sum but here it will find average
+- found maximum sales using max
+
+- made matrix ("low sales" appearing though checked twice switch formula is okay)
