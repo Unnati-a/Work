@@ -1,0 +1,5 @@
+- added revenue column in OrderItems table
+- added profit per unit in Products table
+- added month column for monthly analysis
+- added delivery status column
+- green coloured column for new columns and all table added borders in formating
